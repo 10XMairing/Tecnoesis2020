@@ -6,7 +6,6 @@ import com.github.tenx.tecnoesis20.R;
 import com.github.tenx.tecnoesis20.ui.main.about.AboutFragment;
 import com.github.tenx.tecnoesis20.ui.main.events.EventsFragment;
 import com.github.tenx.tecnoesis20.ui.main.home.HomeFragment;
-import com.github.tenx.tecnoesis20.ui.main.notifications.NotificationsFragment;
 import com.github.tenx.tecnoesis20.ui.main.schedule.ScheduleFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -40,11 +39,42 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 //    frag mans
     private FragmentManager fm;
 
+    private void initNavActions(BottomNavigationView nav){
+        nav.setOnNavigationItemSelectedListener(menuItem -> {
+            int colorID;
+            if(menuItem.getItemId() == R.id.nav_home){
+                colorID = R.color.nav_home;
+
+            }else   if(menuItem.getItemId() == R.id.nav_events){
+                colorID = R.color.nav_events;
+
+
+            }
+            else   if(menuItem.getItemId() == R.id.nav_schedule){
+                colorID = R.color.nav_schedule;
+
+            }
+            else   if(menuItem.getItemId() == R.id.nav_about){
+                colorID = R.color.nav_about;
+
+            }else{
+
+                colorID = R.color.nav_home;
+            }
+
+            botNav.setBackgroundColor(getResources().getColor(colorID));
+
+
+            return true;
+
+        });
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        this is necessary bind call for BindView decorators
+//        this is neccesary bind call for BindView decorators
         ButterKnife.bind(this);
 
 //        set callback as implemented interface
@@ -108,10 +138,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             case R.id.nav_about:
                 frag = new AboutFragment();
                 colorID = R.color.nav_about;
-                break;
-                case R.id.nav_notifications:
-                frag = new NotificationsFragment();
-                colorID = R.color.nav_notifications;
                 break;
                 default:
                     return  false;

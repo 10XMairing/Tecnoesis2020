@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sky"
-    android:tint="#6F0C0000"
-    android:scrollbars="vertical"
-    tools:context=".ui.main.home.HomeFragment"
+    tools:context=".ui.main.home.HomeFragment">
 
-    >
-        <ImageView
-            android:id="@+id/iv_home_banner_image"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_banner_image"
-            android:padding="@dimen/margin_padding_size_small"
-            android:scaleType="fitXY"
-            android:src="@drawable/tecnoesis" />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_home_events"
+    <TextView
+        android:id="@+id/frag_home_tv_headline_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="30dp"
+        android:text="Home Fragment" />
+
+    <TextView
+        android:id="@+id/frag_home_tv_demo"
         android:layout_width="match_parent"
-        android:layout_below="@id/iv_home_banner_image"
-        android:layout_height="match_parent" />
-
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frag_home_tv_headline_test"
+        tools:text="Something will appear here"
+        />
 
 </RelativeLayout>
-

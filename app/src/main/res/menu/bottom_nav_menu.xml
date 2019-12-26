@@ -29,11 +29,5 @@
         android:title="@string/botnav_menu_about"
         app:showAsAction="never"
         android:icon="@drawable/nav_about"
-        /><item
-        android:id="@+id/nav_notifications"
-        android:orderInCategory="100"
-        android:title="@string/botnav_menu_notifications"
-        app:showAsAction="never"
-        android:icon="@drawable/nav_notifications"
         />
 </menu>

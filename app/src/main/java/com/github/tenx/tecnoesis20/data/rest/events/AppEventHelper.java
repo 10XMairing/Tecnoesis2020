@@ -1,9 +1,12 @@
 package com.github.tenx.tecnoesis20.data.rest.events;
 
 import android.content.Context;
+
 import com.github.tenx.tecnoesis20.data.models.EventResponse;
 import com.github.tenx.tecnoesis20.modules.RetrofitProvider;
+
 import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Response;
 
