@@ -3,11 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.about.SponsorsFragment">
+    tools:context=".ui.main.about.SponsorsFragment"
+    android:background="@drawable/space">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="sponsors" />
+        android:layout_height="wrap_content"
+        android:id="@+id/frag_sponsors_rv_sponsors"
+        android:layout_marginBottom="60dp"
+        tools:listitem="@layout/card_sponsor"></androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>
