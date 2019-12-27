@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.home.HomeFragment"
+    android:background="@drawable/sky">
+
+    <ImageView
+        android:id="@+id/img_view_heading"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/tecnoesis"
+        android:scaleType="fitXY"/>
+    <TextView
+        android:id="@+id/tv_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/img_view_heading"
+        android:text="SCHEDULE"
+        android:textColor="@color/md_white_1000"
+        android:gravity="center_vertical"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="16dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:padding="10dp"
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_schedule"
+        android:layout_marginBottom="60dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>
