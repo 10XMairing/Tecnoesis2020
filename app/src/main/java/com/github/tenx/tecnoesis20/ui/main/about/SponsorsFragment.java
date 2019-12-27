@@ -56,8 +56,8 @@ public class SponsorsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        mViewModel.getSponsors().observe(this,sponsorsResponse ->{
-            for(AboutSponsorResponse res : sponsorsResponse){
+        mViewModel.getSponsors().observe(this,aboutSponsorsResponse ->{
+            for(AboutSponsorResponse res : aboutSponsorsResponse){
                 mSponsorName.add(res.getSponsorName());
                 mImageUrls.add(res.getImageUrl());
                 mWebsiteUrl.add(res.getWebsiteUrl());

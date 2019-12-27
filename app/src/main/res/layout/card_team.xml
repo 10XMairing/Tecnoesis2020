@@ -76,14 +76,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/card_team_tv_leaders"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
-                <ListView
-                    android:id="@+id/card_team_lv_leaders"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/card_team_rv_leaders"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/list_leader_constraint_expandableView"
-                    tools:listitem="@layout/item_leader"></ListView>
+                    tools:listitem="@layout/item_leader"></androidx.recyclerview.widget.RecyclerView>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -112,14 +112,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/card_team_tv_members"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
-                <ListView
-                    android:id="@+id/card_team_lv_members"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/card_team_rv_members"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/list_member_constraint_expandableView"
-                    tools:listitem="@layout/item_member"></ListView>
+                    tools:listitem="@layout/item_member"></androidx.recyclerview.widget.RecyclerView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

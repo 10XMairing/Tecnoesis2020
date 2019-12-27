@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -23,9 +24,22 @@ import java.util.ArrayList;
 public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder> {
     private ArrayList<String> mImageUrl = new ArrayList<>();
     private ArrayList<String> mTeamName = new ArrayList<>();
-    private ArrayList<ArrayList<String>> mLeadersList = new ArrayList<>();
-    private ArrayList<ArrayList<String>> mMembersList = new ArrayList<>();
+    private ArrayList<ArrayList<String>> mLeaderImageUrl = new ArrayList<>();
+    private ArrayList<ArrayList<String>> mLeaderName = new ArrayList<>();
+    private ArrayList<ArrayList<String>> mMemberImageUrl = new ArrayList<>();
+    private ArrayList<ArrayList<String>> mMemberName = new ArrayList<>();
     private Context mContext;
+
+    public TeamAdapter(Context mContext, ArrayList<String> mImageUrl, ArrayList<String> mTeamName, ArrayList<ArrayList<String>> mLeaderImageUrl, ArrayList<ArrayList<String>> mLeaderName, ArrayList<ArrayList<String>> mMemberImageUrl, ArrayList<ArrayList<String>> mMemberName) {
+        this.mImageUrl = mImageUrl;
+        this.mTeamName = mTeamName;
+        this.mLeaderImageUrl = mLeaderImageUrl;
+        this.mLeaderName = mLeaderName;
+        this.mMemberImageUrl = mMemberImageUrl;
+        this.mMemberName = mMemberName;
+        this.mContext = mContext;
+    }
+
     @NonNull
     @Override
     public TeamViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -52,6 +66,9 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
                     TransitionManager.beginDelayedTransition(holder.teamCard,new AutoTransition());
                     holder.leadersExpandableView.setVisibility(View.GONE);
                 }
+                LeaderOrMemberAdapter adapter = new LeaderOrMemberAdapter(mContext,mLeaderImageUrl.get(position),mLeaderName.get(position));
+                holder.leadersRecyclerView.setAdapter(adapter);
+                holder.leadersRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
             }
         });
         holder.member.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +82,9 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
                     TransitionManager.beginDelayedTransition(holder.teamCard,new AutoTransition());
                     holder.membersExpandableView.setVisibility(View.GONE);
                 }
+                LeaderOrMemberAdapter adapter = new LeaderOrMemberAdapter(mContext,mMemberImageUrl.get(position),mMemberName.get(position));
+                holder.membersRecyclerView.setAdapter(adapter);
+                holder.membersRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
             }
         });
     }
@@ -79,11 +99,12 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
         TextView teamName;
         TextView leader;
         TextView member;
-        ListView leadersList;
-        ListView membersList;
+        RecyclerView leadersRecyclerView;
+        RecyclerView membersRecyclerView;
         ConstraintLayout leadersExpandableView;
         ConstraintLayout membersExpandableView;
         CardView teamCard;
+
 
         public TeamViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,11 +112,12 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TeamViewHolder
             teamName = itemView.findViewById(R.id.card_team_tv_teamName);
             leader = itemView.findViewById(R.id.card_team_tv_leaders);
             member = itemView.findViewById(R.id.card_team_tv_members);
-            leadersList = itemView.findViewById(R.id.card_team_lv_leaders);
-            membersList = itemView.findViewById(R.id.card_team_lv_members);
+            leadersRecyclerView = itemView.findViewById(R.id.card_team_rv_leaders);
+            membersRecyclerView = itemView.findViewById(R.id.card_team_rv_members);
             leadersExpandableView = itemView.findViewById(R.id.list_leader_constraint_expandableView);
             membersExpandableView = itemView.findViewById(R.id.list_member_constraint_expandableView);
             teamCard = itemView.findViewById(R.id.card_team_cv_teamCard);
         }
     }
+
 }
