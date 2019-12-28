@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -69,7 +70,32 @@ public class TeamsFragment extends Fragment {
                 mTeamLeader.add(res.getmTeamLeaders());
                 mTeamMember.add(res.getmTeamMembers());
             }
-
-            });
+            for(ArrayList<AboutTeamLeader> res : mTeamLeader){
+                ArrayList<String> tempImageUrl = new ArrayList<>();
+                ArrayList<String> tempName = new ArrayList<>();
+                for (AboutTeamLeader res2 : res){
+                    tempImageUrl.add(res2.getLeaderImage());
+                    tempName.add(res2.getLeaderName());
+                }
+                mLeaderImageUrl.add(tempImageUrl);
+                mLeaderName.add(tempName);
+            }
+            for(ArrayList<AboutTeamMember> res : mTeamMember){
+                ArrayList<String> tempImageUrl = new ArrayList<>();
+                ArrayList<String> tempName = new ArrayList<>();
+                for (AboutTeamMember res2 : res){
+                    tempImageUrl.add(res2.getMemberImage());
+                    tempName.add(res2.getMemberName());
+                }
+                mMemberImageUrl.add(tempImageUrl);
+                mMemberName.add(tempName);
+            }
+            teamsRecyclerView();
+        });
+    }
+    private void teamsRecyclerView(){
+        TeamAdapter adapter = new TeamAdapter(getActivity(), mImageUrl, mTeamName, mLeaderImageUrl, mLeaderName, mMemberImageUrl, mMemberName);
+        teamsRecyclerView.setAdapter(adapter);
+        teamsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
 }
