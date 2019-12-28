@@ -29,6 +29,7 @@ public class AboutFragment extends Fragment {
 
     @BindView(R.id.about_tabs)
     TabLayout tabLayout;
+
     public static AboutFragment newInstance() {
         return new AboutFragment();
     }
@@ -36,12 +37,6 @@ public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-
-        mAboutPageAdapter = new AboutPageAdapter(getActivity().getSupportFragmentManager());
-
-        setupViewPager(mViewPager);
-        tabLayout.setupWithViewPager(mViewPager);
-
         return inflater.inflate(R.layout.fragment_about, container, false);
     }
 
@@ -50,6 +45,16 @@ public class AboutFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(AboutViewModel.class);
         // TODO: Use the ViewModel
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        mAboutPageAdapter = new AboutPageAdapter(getActivity().getSupportFragmentManager());
+
+        setupViewPager(mViewPager);
+        tabLayout.setupWithViewPager(mViewPager);
     }
 
     private void setupViewPager(ViewPager viewPager){
