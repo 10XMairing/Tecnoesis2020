@@ -24,7 +24,6 @@ public class EventsFragment extends Fragment {
     @BindView(R.id.recycler_events_list)
     RecyclerView recyclerView;
 
-
     private EventsViewModel mViewModel;
 
 

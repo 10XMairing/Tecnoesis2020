@@ -1,60 +1,58 @@
-package com.github.tenx.tecnoesis20.ui.module.modulefrag;
+package com.github.tenx.tecnoesis20.ui.main.EventDescription;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.ImageView;
-import android.widget.ScrollView;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
 import com.github.tenx.tecnoesis20.R;
 import com.github.tenx.tecnoesis20.Utils;
 import com.github.tenx.tecnoesis20.data.models.ModuleBody;
+
+
+
 import com.github.tenx.tecnoesis20.ui.module.ModuleActivity;
+import com.github.tenx.tecnoesis20.ui.module.ModuleAdapter;
+import com.github.tenx.tecnoesis20.ui.module.modulefrag.EventAdapter;
+import com.github.tenx.tecnoesis20.ui.module.modulefrag.ModuleFragment;
+import com.github.tenx.tecnoesis20.ui.module.modulefrag.ModuleViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ModuleFragment extends Fragment {
+public class EventDescFragment extends Fragment {
+
+    @BindView(R.id.frag_events_rv_eventlist)
+    RecyclerView recyclerView;
 
 
-    @BindView(R.id.recycler_module_event_list)
-    RecyclerView recyclerModuleEventList;
+    private EventDescViewModel edViewModel;
 
-    private ModuleViewModel mViewModel;
-
-    private EventAdapter adapter;
+    private EventDescriptionAdapter eventDescriptionAdapter;
 
 
-    public static ModuleFragment newInstance() {
-        return new ModuleFragment();
+    public static EventDescFragment newInstance() {
+        return new EventDescFragment();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_module, container, false);
+        View v = inflater.inflate(R.layout.fragment_eventdesc_list, container, false);
         ButterKnife.bind(this, v);
 
 
-        try {
+      try {
             Bundle args = getArguments();
-            int index = args.getInt(ModuleActivity.PAGE_INDEX_KEY);
-
+            int index = args.getInt(EventDescActivity.PAGE_INDEX_KEY);
             ModuleBody testdata = Utils.getModules().get(index);
-
-            initData(testdata, getActivity());
+           initData(testdata, getActivity());
 
 
         } catch (NullPointerException e) {
@@ -68,20 +66,15 @@ public class ModuleFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(ModuleViewModel.class);
+      //  edViewModel = ViewModelProviders.of(this).get(EventDescViewModel.class);
         // TODO: Use the ViewModel
     }
-
-
-    private void initData(ModuleBody data, Context context)
+    private void initData(ModuleBody data,Context context)
     {
-        adapter = new EventAdapter(context , data);
-        recyclerModuleEventList.setLayoutManager(new LinearLayoutManager(context));
-
-        recyclerModuleEventList.setNestedScrollingEnabled(false);
-        recyclerModuleEventList.setAdapter(adapter);
+        eventDescriptionAdapter = new EventDescriptionAdapter( data  , context);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setNestedScrollingEnabled(false);
+        recyclerView.setAdapter(eventDescriptionAdapter);
 
     }
-
-
 }

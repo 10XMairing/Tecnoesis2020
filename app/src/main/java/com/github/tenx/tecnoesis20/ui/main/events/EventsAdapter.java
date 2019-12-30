@@ -24,7 +24,6 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ImageViewH
         this.mContext = mContext;
         this.elist = edata;
     }
-
     @NonNull
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,7 +36,6 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ImageViewH
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position)
     {
         Glide.with(mContext).load("https://picsum.photos/30"+position).into(holder.module_image);
-
     }
 
     @Override

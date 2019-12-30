@@ -27,14 +27,12 @@ import butterknife.ButterKnife;
 
 public class ModuleRecyclerAdapter extends RecyclerView.Adapter<ModuleRecyclerAdapter.CustomViewHolder> {
 
-
     class CustomViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.iv_module_image)
         ImageView ivEventsModuleImage;
         @BindView(R.id.tv_module_name)
         TextView tvEventsModuleName;
-
         @BindView(R.id.tv_module_description)
         TextView tvModuleDescription;
         @BindView(R.id.btn_events_module_item_read_more)
@@ -46,8 +44,6 @@ public class ModuleRecyclerAdapter extends RecyclerView.Adapter<ModuleRecyclerAd
             ButterKnife.bind(this, itemView);
         }
     }
-
-
     private Context context;
     private List<ModuleBody> listModules;
 
@@ -69,12 +65,11 @@ public class ModuleRecyclerAdapter extends RecyclerView.Adapter<ModuleRecyclerAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull CustomViewHolder holder, int position)
+    {
         ModuleBody currentItem = listModules.get(position);
         Glide.with(context).load(currentItem.getImage()).into(holder.ivEventsModuleImage);
         holder.tvEventsModuleName.setText(currentItem.getName().toUpperCase());
-
         holder.btnModuleItemReadMore.setOnClickListener(v -> {
             changeActivity(position);
         });
@@ -90,4 +85,5 @@ public class ModuleRecyclerAdapter extends RecyclerView.Adapter<ModuleRecyclerAd
         intent.putExtra(Config.INITIAL_PAGE, position);
         context.startActivity(intent);
     }
+
 }

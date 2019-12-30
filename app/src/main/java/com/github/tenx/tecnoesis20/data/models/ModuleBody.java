@@ -46,14 +46,16 @@ public class ModuleBody {
     public void setImage(String image) {
         this.image = image;
     }
+    
 
     public List<EventBody> getEventList() {
         return eventList;
-    }
+    }//
 
     public void setEventList(List<EventBody> eventList) {
         this.eventList = eventList;
     }
+
 
     public static class EventBody {
         String name;
@@ -61,16 +63,29 @@ public class ModuleBody {
         String rules;
         String image;
         String date;
+        String prize;
         String registerLink;
 
-        public EventBody(String name, String description, String rules, String image, String date, String registerLink) {
+        public EventBody(String name, String description, String rules, String image, String date, String registerLink, String prize) {
             this.name = name;
             this.description = description;
             this.rules = rules;
             this.image = image;
+            this.prize=prize;
             this.date = date;
             this.registerLink = registerLink;
         }
+
+
+        public  String getPrize()
+        {
+            return prize;
+        }
+        public void setPrize(String prize)
+        {
+            this.prize=prize;
+        }
+
 
         public String getName() {
             return name;

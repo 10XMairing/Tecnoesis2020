@@ -122,13 +122,12 @@
         android:layout_marginLeft="30dp"
         android:text="REGISTER"
         />
-    <com.google.android.material.button.MaterialButton
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="120dp"
+    <TextView
+        android:layout_width="160dp"
         android:layout_height="50dp"
         android:text="REGISTER"
         android:textSize="10dp"
-        android:id="@+id/frag_events_btn_register"
+        android:id="@+id/frag_events_tv_register"
         android:layout_marginTop="550dp"
         android:layout_marginLeft="40sp"
         app:cornerRadius="10dp"
@@ -142,6 +141,6 @@
         app:backgroundTint="#6198cb"
         app:strokeWidth="1dp">
 
-    </com.google.android.material.button.MaterialButton>
+    </TextView>
 
 </RelativeLayout>
