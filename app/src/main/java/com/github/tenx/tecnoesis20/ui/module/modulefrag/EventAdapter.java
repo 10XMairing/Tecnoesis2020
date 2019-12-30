@@ -100,8 +100,6 @@ public class EventAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     class CustomViewHolder extends RecyclerView.ViewHolder {
-
-
         @BindView(R.id.iv_event_image)
         ImageView ivEventImage;
         @BindView(R.id.tv_event_name)

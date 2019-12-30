@@ -35,7 +35,6 @@ public class EventDescActivity  extends AppCompatActivity {
 
     private EventlistAdapter eventlistAdapter;
     private ArrayList<Fragment> listFragments;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,12 +46,13 @@ public class EventDescActivity  extends AppCompatActivity {
 
     }
 
-    private void initFragmentPager(Context context) {
+    private void initFragmentPager(Context context)
+    {
 //        demo fragments
-
-        List<ModuleBody> modules = Utils.getModules();
+        List<ModuleBody> modules =Utils.getModules();
         listFragments = new ArrayList<>();
-        for (int i = 0; i < modules.size(); i++) {
+        for (int i = 0; i < modules.size(); i++)
+        {
             EventDescFragment frag = new EventDescFragment();
             Bundle data = new Bundle();
             data.putInt(PAGE_INDEX_KEY, i);
@@ -62,13 +62,11 @@ public class EventDescActivity  extends AppCompatActivity {
         eventlistAdapter = new EventlistAdapter(getSupportFragmentManager(),FragmentPagerAdapter.POSITION_NONE, context, listFragments);
         vpModulesFragmentPager.setAdapter(eventlistAdapter);
         dotsIndicator.setViewPager(vpModulesFragmentPager);
-
-
         try {
             Intent data = getIntent();
             int pos = data.getIntExtra(Config.INITIAL_PAGE, 0);
             vpModulesFragmentPager.setCurrentItem(pos);
-        } catch (NullPointerException e) {
+            } catch (NullPointerException e) {
             Timber.d("No initial page was passed to intent");
         }
 

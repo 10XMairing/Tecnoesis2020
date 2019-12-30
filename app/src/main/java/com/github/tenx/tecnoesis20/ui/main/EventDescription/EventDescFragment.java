@@ -52,10 +52,11 @@ public class EventDescFragment extends Fragment {
             Bundle args = getArguments();
             int index = args.getInt(EventDescActivity.PAGE_INDEX_KEY);
             ModuleBody testdata = Utils.getModules().get(index);
-           initData(testdata, getActivity());
+            initData(testdata, getActivity());
 
 
         } catch (NullPointerException e) {
+
             throw new Error("Did not receive page index in bundle!");
         }
 

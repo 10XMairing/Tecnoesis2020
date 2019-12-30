@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 
     public class EventDescriptionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final int TYPE_HEADER = 110;
-    private static final int TYPE_ITEM = 111;
+    private static final int TYPE_ITEM=111;
 
 
     private List<ModuleBody.EventBody> eventdetails;
@@ -64,11 +64,12 @@ import butterknife.ButterKnife;
     }
     @Override
     public int getItemViewType(int position) {
-        if (position == 0) {
+
+            if(position==0)
+
             return TYPE_HEADER;
-        } else {
-            return TYPE_ITEM;
-        }
+            else
+                return TYPE_ITEM;
     }
     class CustomViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.frag_events_btn_eventimage)

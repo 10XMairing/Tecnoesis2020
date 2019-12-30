@@ -8,19 +8,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
-
 public class EventlistAdapter extends FragmentPagerAdapter
 {
     private Context context;
     private ArrayList<Fragment> listFragments;
-
-
     public EventlistAdapter(@NonNull FragmentManager fm, int behavior, Context context, ArrayList<Fragment> listFragments) {
         super(fm, behavior);
         this.context = context;
         this.listFragments = listFragments;
     }
-
     @NonNull
     @Override
     public Fragment getItem(int position) {
